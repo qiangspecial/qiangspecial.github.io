@@ -1,0 +1,333 @@
+
+#historyAxis .line {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: #f00;
+    opacity: .1;
+}/* 
+#historyAxis .js-point-list i:nth-of-type(1),
+#historyAxis .js-point-list i:nth-of-type(20) {
+    background: #00f!important;
+} */
+* {
+    margin: 0; padding: 0;
+}
+#historyAxisContainer {
+    background: #F7F7F7;
+}
+#historyAxis {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    /* border: 1px solid #f00; */
+    height: 840px;
+    overflow: hidden;
+    background: url(./imgs/bg.png) no-repeat center top;
+}
+#historyAxis .js-point-list {
+    position: absolute;
+    width: 5000px;
+    left: 50%;
+    transform: translateX(-2000px);
+    /* padding-left: 200px; */
+    bottom: -332px;
+    /* transition: transform 1s ease-in-out; */
+}
+#historyAxis .js-point {
+    float: left;
+    position: relative;
+    width: 400px;
+    display: flex;
+    gap: 18px;
+}
+#historyAxis i {
+    width: 2px;
+    height: 500px;
+    background-color: #ccc;
+    /* transform: translateY(160px); */
+    background: linear-gradient(180deg, #ccc 0%, rgba(255,255,255,0) 45%);
+}
+#historyAxis .active {
+    position: relative;
+    transform: translateY(-90px);
+    background: linear-gradient(180deg, #ccc 0%, rgba(255,255,255,0) 75%);
+}
+#historyAxis .active h4 {
+    position: absolute;
+    width: 100px;
+    left: -50px;
+    top: -60px;
+    font-style: normal;
+    text-align: center;
+    color: #D8D8D8;
+    font-size: 48px;
+    z-index: 9;
+}
+#historyAxis .disabled h4 {
+    color: #f0f0f0;
+}
+#historyAxis .js-point-content-list {
+    position: absolute;
+    left: 50%;
+    width: 410px;
+    top: 332px;
+    transform: translateX(-200px);
+}
+#historyAxis .js-point-content {
+    position: absolute;
+    left: 16px;
+    top: 0;
+    width: 410px;
+    opacity: 0;
+}
+#historyAxis .js-point-content h4 {
+    color: #00C5CE;
+    font-size: 48px;
+    font-style: normal;
+}
+#historyAxis .js-point-content p {
+    font-size: 24px;
+    line-height: 42px;
+    font-style: normal;
+}
+#historyAxis .js-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 99;
+    width: 48px;
+    height: 48px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+#historyAxis .js-btn-left {
+    left: 44px;
+    background: url(./imgs/left.png) no-repeat;
+}
+#historyAxis .js-btn-left:hover {
+    background: url(./imgs/left_hover.png) no-repeat;
+}
+#historyAxis .js-btn-right {
+    right: 44px;
+    background: url(./imgs/right.png) no-repeat;
+}
+#historyAxis .js-btn-right:hover {
+    background: url(./imgs/right_hover.png) no-repeat;
+}
+/* #historyAxis .point {
+    animation: move 1s ease-in-out forwards;
+} */
+#historyAxis .js-point-list .active-out {
+    /* animation: move 1s ease-in-out forwards, active-in 1s ease-in-out forwards; */
+}
+
+@keyframes move {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-400px,0);
+    }
+}
+#historyAxis .js-point-content-list .active-in {
+    animation: opacity-show 1s ease-in-out 1s forwards;
+}
+
+#historyAxis .js-point-content-list .active-out {
+    animation: opacity-hide .5s ease-in-out forwards;
+}
+#historyAxis .js-point-content-list .active-stop {
+    opacity: 1;
+}
+
+/* active stop */
+#historyAxis .js-point-list .active-stop i:nth-of-type(5),
+#historyAxis .js-point-list .active-stop i:nth-of-type(17) {
+    transform: translateY(-10px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(6),
+#historyAxis .js-point-list .active-stop i:nth-of-type(16) {
+    transform: translateY(-30px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(7),
+#historyAxis .js-point-list .active-stop i:nth-of-type(15) {
+    transform: translateY(-60px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(8),
+#historyAxis .js-point-list .active-stop i:nth-of-type(14) {
+    transform: translateY(-90px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(9),
+#historyAxis .js-point-list .active-stop i:nth-of-type(13) {
+    transform: translateY(-120px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(10),
+#historyAxis .js-point-list .active-stop i:nth-of-type(12) {
+    transform: translateY(-150px);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(11) {
+    transform: translateY(-327px);
+    background: linear-gradient(180deg, #00C5CE 0%, rgba(255,255,255,0) 100%);
+}
+#historyAxis .js-point-list .active-stop i:nth-of-type(11) h4 {
+    opacity: 0;
+}
+
+/* active in */
+#historyAxis .js-point-list .active-in i:nth-of-type(5),
+#historyAxis .js-point-list .active-in i:nth-of-type(17) {
+    animation: active-in-10 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(6),
+#historyAxis .js-point-list .active-in i:nth-of-type(16) {
+    animation: active-in-30 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(7),
+#historyAxis .js-point-list .active-in i:nth-of-type(15) {
+    animation: active-in-60 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(8),
+#historyAxis .js-point-list .active-in i:nth-of-type(14) {
+    animation: active-in-90 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(9),
+#historyAxis .js-point-list .active-in i:nth-of-type(13) {
+    animation: active-in-120 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(10),
+#historyAxis .js-point-list .active-in i:nth-of-type(12) {
+    animation: active-in-150 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(11){
+    animation: active-in-327 1s ease-in-out forwards;
+}
+#historyAxis .js-point-list .active-in i:nth-of-type(11) h4 {
+    animation: opacity-hide .2s ease-in-out 0.5s forwards;
+}
+/* active out */
+#historyAxis .js-point-list .active-out i:nth-of-type(5),
+#historyAxis .js-point-list .active-out i:nth-of-type(17) {
+    animation: active-in-10 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(6),
+#historyAxis .js-point-list .active-out i:nth-of-type(16) {
+    animation: active-in-30 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(7),
+#historyAxis .js-point-list .active-out i:nth-of-type(15) {
+    animation: active-in-60 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(8),
+#historyAxis .js-point-list .active-out i:nth-of-type(14) {
+    animation: active-in-90 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(9),
+#historyAxis .js-point-list .active-out i:nth-of-type(13) {
+    animation: active-in-120 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(10),
+#historyAxis .js-point-list .active-out i:nth-of-type(12) {
+    animation: active-in-150 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(11){
+    animation: active-in-327 1s ease-in-out .5s forwards reverse;
+}
+#historyAxis .js-point-list .active-out i:nth-of-type(11) h4 {
+    animation: opacity-show .3s ease-in-out 1s forwards;
+}
+
+@keyframes opacity-show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes opacity-hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* NEW ACTIVE IN */
+
+@keyframes active-in-327 {
+    0% {
+        transform: translateY(-90px);
+        background: linear-gradient(180deg, #ccc 0%, rgba(255,255,255,0) 75%);
+    }
+    100% {
+        transform: translateY(-327px);
+        background: linear-gradient(180deg, #00C5CE 0%, rgba(255,255,255,0) 100%);
+    }
+}
+@keyframes active-in-150 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-150px);
+    }
+}
+@keyframes active-in-120 {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-120px);
+    }
+}
+@keyframes active-in-90 {
+    0% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-90px);
+    }
+}
+@keyframes active-in-60 {
+    0% {
+        transform: translateY(0);
+    }
+    60% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-60px);
+    }
+}
+@keyframes active-in-30 {
+    0% {
+        transform: translateY(0);
+    }
+    80% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-30px);
+    }
+}
+@keyframes active-in-10 {
+    0% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}

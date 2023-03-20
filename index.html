@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="historyAxisContainer">
+    <div id="historyAxis">
+        <!-- <div class="line"></div> -->
+        <div class="js-btn-left js-btn"></div>
+        <div class="js-btn-right js-btn"></div>
+        <div class="js-point-content-list point-content-list"></div>
+        <div class="js-point-list point-list"></div>
+    </div>
+</div>
+    <script src="./index.js"></script>
+    <script>
+        const historyList = [
+            {
+                title: '2012',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            },
+            {
+                title: '2013',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            },
+            {
+                title: '2014',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            }, {
+                title: '2015',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            }, {
+                title: '2016',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            }, {
+                title: '2017',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            }
+            , {
+                title: '2018',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            }, {
+                title: '2019',
+                content: '成立股份有限公司，研发公司秀新获浦东新区企业研发机构'
+            },
+        ]
+        const historyAxisInstance = new historyAxis({data: historyList, moveTime: 800})
+    </script>
+</body>
+</html>
