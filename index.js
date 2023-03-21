@@ -21,7 +21,7 @@ class historyAxis {
         this.isRunning = false
         this.timer = null
         this.init()
-        this.start()
+        // this.start()
     }
     init() {
         const firstTitle = this.data[0].title
