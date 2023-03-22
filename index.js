@@ -68,8 +68,9 @@ var EventUtil = {
                     break;
                 case "touchmove":
                     //阻止默认行为
-                    if (isPreventDefault)
-                        event.preventDefault();
+                    if (isPreventDefault) {
+                        event && event.preventDefault();
+                    }
                     break;
             }
         }
@@ -121,23 +122,50 @@ class historyAxis {
         this.$leftBtn = document.querySelector('#historyAxis .js-btn-left')
         this.$rightBtn = document.querySelector('#historyAxis .js-btn-right')
 
-        this.$container.addEventListener('mouseenter', () => {
-            clearTimeout(this.timer)
-        })
-        this.$container.addEventListener('mouseleave', () => {
-            this.start()
-        })
+        // PC 端鼠标移入目标区域停止自动滚动
+        // this.$container.addEventListener('mouseenter', () => {
+        //     this.clear()
+        // })
+        // this.$container.addEventListener('mouseleave', () => {
+        //     this.start()
+        // })
+        // pc 端左右按钮
         this.$leftBtn.addEventListener('click', async () => {
             await this.prev()
         })
         this.$rightBtn.addEventListener('click', async () => {
             await this.next()
         })
-        EventUtil.listenTouchDirection(document, true, () => { }, () => {
+        // 移动端滑动事件
+        EventUtil.listenTouchDirection(this.$container, true, () => { }, () => {
             this.prev()
         }, () => { }, () => {
             this.next()
         })
+
+        // 进入视图内才开始自动滚动
+        const scrollHandle = () => {
+            const clientHeight = document.documentElement.clientHeight;
+            const boundingBox = this.$container.getBoundingClientRect();
+            const top = boundingBox.top;
+
+            if (boundingBox.height < clientHeight) {
+                if (top < -300 || top > (clientHeight - boundingBox.height + 300)) {
+                    console.log('clear')
+                    this.clear()
+                } else if (top <= (clientHeight - boundingBox.height + 300)) {
+                    this.start()
+                }
+            } else {
+                if (top > 300 || boundingBox.bottom < clientHeight) {
+                    console.log('clear')
+                    this.clear()
+                } else if (top < 300) {
+                    this.start()
+                }
+            }
+        }
+        window.addEventListener("scroll", scrollHandle);
     }
     createPoint({ title } = {}, status = '') {
         return `<div class="js-point ${status}">
@@ -184,6 +212,8 @@ class historyAxis {
         if (this.isRunning) return
         if (this.currentIndex >= (this.data.length - 1)) return
         this.isRunning = true
+        console.log('next')
+        this.clear()
         await this.hideActivePoint(this.currentIndex)
         await this.move(this.currentIndex + 1)
         await this.showActivePoint(this.currentIndex + 1)
@@ -193,16 +223,28 @@ class historyAxis {
         if (this.isRunning) return
         if (this.currentIndex === 0) return
         this.isRunning = true
+        console.log('prev')
+        this.clear()
         await this.hideActivePoint(this.currentIndex)
         await this.move(this.currentIndex - 1)
         await this.showActivePoint(this.currentIndex - 1)
         this.isRunning = false
     }
+    clear() {
+        if (this.timer) {
+            console.log('clear')
+            clearTimeout(this.timer)
+            this.timer = null
+        }
+    }
     start() {
-        if (this.timer) clearTimeout(this.timer)
-        this.timer = setTimeout(async () => {
-            await this.next()
+        if (this.timer) return
+        console.log('start')
+        this.timer = setTimeout(() => {
+            this.next()
+            this.timer = null
             this.start()
-        }, 5000)
+            console.log(new Date().getTime() / 1000)
+        }, 8000)
     }
 }

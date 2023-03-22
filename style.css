@@ -420,10 +420,12 @@ html,body {
         background-size: 100% auto;
     }
     #historyAxis .js-btn-left {
-        left: 10px;
+        /* left: 10px; */
+        display: none;
     }
     #historyAxis .js-btn-right {
-        right: 10px;
+        /* right: 10px; */
+        display: none;
     }
     #historyAxis .js-point-list {
         bottom: -280px;
