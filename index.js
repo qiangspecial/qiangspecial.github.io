@@ -90,6 +90,7 @@ class historyAxis {
         this.skip = 4
         this.isRunning = false
         this.timer = null
+        this.isInView = false
         this.init()
         // this.start()
     }
@@ -138,9 +139,9 @@ class historyAxis {
         })
         // 移动端滑动事件
         EventUtil.listenTouchDirection(this.$container, false, () => { }, () => {
-            this.prev()
+            if (this.isInView) this.prev()
         }, () => { }, () => {
-            this.next()
+            if (this.isInView) this.next()
         })
 
         // 进入视图内才开始自动滚动
@@ -153,15 +154,19 @@ class historyAxis {
                 if (top < -300 || top > (clientHeight - boundingBox.height + 300)) {
                     console.log('clear')
                     this.clear()
+                    this.isInView = false
                 } else if (top <= (clientHeight - boundingBox.height + 300)) {
                     this.start()
+                    this.isInView = true
                 }
             } else {
                 if (top > 300 || boundingBox.bottom < clientHeight) {
                     console.log('clear')
                     this.clear()
+                    this.isInView = false
                 } else if (top < 300) {
                     this.start()
+                    this.isInView = true
                 }
             }
         }
