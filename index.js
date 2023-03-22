@@ -137,7 +137,7 @@ class historyAxis {
             await this.next()
         })
         // 移动端滑动事件
-        EventUtil.listenTouchDirection(this.$container, true, () => { }, () => {
+        EventUtil.listenTouchDirection(this.$container, false, () => { }, () => {
             this.prev()
         }, () => { }, () => {
             this.next()
