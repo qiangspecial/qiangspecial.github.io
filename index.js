@@ -40,12 +40,12 @@ var EventUtil = {
         function handleTouchEvent(event) {
             switch (event.type) {
                 case "touchstart":
-                    startX = event.touches[0].pageX;
-                    startY = event.touches[0].pageY;
+                    startX = event.touches[0].clientX;
+                    startY = event.touches[0].clientY;
                     break;
                 case "touchend":
-                    var spanX = event.changedTouches[0].pageX - startX;
-                    var spanY = event.changedTouches[0].pageY - startY;
+                    var spanX = event.changedTouches[0].clientX - startX;
+                    var spanY = event.changedTouches[0].clientY - startY;
 
                     if (Math.abs(spanX) > Math.abs(spanY)) {      //认定为水平方向滑动
                         if (spanX > 30) {         //向右
