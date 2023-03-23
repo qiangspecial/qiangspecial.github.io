@@ -168,7 +168,7 @@ class historyAxis {
                     this.isInView = true
                 }
             } else {
-                if (top > 300 || boundingBox.bottom < clientHeight) {
+                if (top > 300 || boundingBox.bottom < (clientHeight - 300)) {
                     console.log('clear')
                     this.clear()
                     this.isInView = false
