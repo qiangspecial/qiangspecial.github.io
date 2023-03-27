@@ -2,6 +2,7 @@
 html,body {
     height: 100%;
 }
+
 #historyAxis .line {
     position: absolute;
     left: 50%;
@@ -17,10 +18,111 @@ html,body {
 * {
     margin: 0; padding: 0;
 }
+@font-face {
+    font-family: 'D-DINCondensed-Bold';
+    src: url('./D-DINCondensed-Bold.ttf');
+}
+@font-face {
+    font-family: 'D-DINCondensed';
+    src: url('./D-DINCondensed.ttf');
+}
+.history-title {
+    position: absolute;
+    left: 12%;
+    color: #000000;
+    top: 10%;
+    max-width: 408px;
+}
+.history-title strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.history-title h3 {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 50px;
+}
+.history-title h3::after {
+    display: block;
+    content: "";
+    width: 73px;
+    height: 2px;
+    background:#00C5CE;
+    margin-top: 12px;
+}
+.history-title p {
+    margin: 14px 0 24px 0;
+    font-size: 18px;
+    line-height: 36px;
+}
+.history-title a {
+    display: block;
+    width: 205px;
+    height: 50px;
+    border: 1px solid #00C5CE;
+    font-size: 20px;
+    font-weight: 600;
+    color: #00C5CE;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+@media screen and (max-height: 720px) {
+    .history-title {
+        top: 50px;
+        left: 6%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .history-title {
+        top: 0;
+        left: 50%;
+        width: calc(100% - 40px);
+        transform: translateX(-50%);
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .history-title strong {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+    .history-title h3 {
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 33px;
+    }
+    .history-title h3::after {
+        margin: 10px auto 0;
+    }
+    .history-title p {
+        font-size: 14px;
+        line-height: 28px;
+        margin: 20px 0 40px;
+    }
+    .history-title a {
+        width: 148px;
+        height: 35px;
+        background: rgba(216,216,216,0);
+        border: 1px solid #00C5CE;
+        font-size: 12px;
+        font-weight: 500;
+        color: #00C5CE;
+        line-height: 35px;
+    }
+}
+
 #historyAxisContainer {
     background: #F7F7F7;
     max-height: 840px;
-    min-height: 600px;
+    min-height: 700px;
     height: 100%;
 }
 #historyAxis {
@@ -62,6 +164,9 @@ html,body {
     position: relative;
     transform: translateY(-90px);
     background: linear-gradient(180deg, #ccc 0%, rgba(255,255,255,0) 75%);
+}
+#historyAxis h4 {
+    font-family: D-DINCondensed-Bold, D-DINCondensed;
 }
 #historyAxis .active h4 {
     position: absolute;
@@ -438,7 +543,7 @@ html,body {
         width: calc(100% - 170px);
         transform: translate(-50%, 0);
         top: auto;
-        bottom: 265px;
+        bottom: 275px;
     }
     #historyAxis .js-point-content {
         transform: translateY(-100%);

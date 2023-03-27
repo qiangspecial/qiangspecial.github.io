@@ -44,7 +44,6 @@ var EventUtil = {
                     startX = event.touches[0].clientX;
                     startY = event.touches[0].clientY;
                     scrollY = window.scrollY
-                    console.log(111, scrollY)
                     break;
                 case "touchend":
                     var spanX = event.changedTouches[0].clientX - startX;
